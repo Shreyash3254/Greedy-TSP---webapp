@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Greedy TSP Solver</title>
+</head>
+<body>
+<h1>Greedy TSP Solver</h1>
+
+<form method="POST">
+    <div id="cities">
+        <div>
+            City Name: <input type="text" name="city_name" required>
+            X: <input type="number" name="x_coord" step="0.01" required>
+            Y: <input type="number" name="y_coord" step="0.01" required>
+        </div>
+    </div>
+    <button type="button" onclick="addCity()">Add Another City</button>
+    <br><br>
+    <input type="submit" value="Solve TSP">
+</form>
+
+<script>
+function addCity() {
+    var div = document.createElement('div');
+    div.innerHTML = 'City Name: <input type="text" name="city_name" required> X: <input type="number" name="x_coord" step="0.01" required> Y: <input type="number" name="y_coord" step="0.01" required>';
+    document.getElementById('cities').appendChild(div);
+}
+</script>
+
+{% if path %}
+<h2>Greedy TSP Path: {{ path }}</h2>
+<h3>Total Distance: {{ total_dist }}</h3>
+<img src="data:image/png;base64,{{ plot_url }}" />
+{% endif %}
+
+</body>
+</html>
